@@ -13,11 +13,13 @@
 NAME = fractol
 SRCS_LIBS = ./srcs/ft_error.c \
 			./srcs/main.c \
-			./srcs/ft_draw.c \
+			./srcs/ft_draw_julia_mandelbrot.c \
 			./srcs/ft_key.c \
 			./srcs/move_mouse.c \
 			./srcs/put_pixel.c \
-			./srcs/init.c
+			./srcs/init.c \
+			./srcs/ft_draw_frac.c \
+			./srcs/newton.c
 
 CC = cc
 INC_LIBS = ./include
@@ -32,7 +34,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 		@make -C libft
 		@$(CC) -I $(INC_LIBX) -I $(INC_LIBS) -L libft/ -lft $(OBJS) -L $(INC_MINILIBX) -o $(NAME)
-		@echo '\033[32m[ ✔ ] FDF\033[0m' ""
+		@echo '\033[32m[ ✔ ] FRACT_OL\033[0m' ""
 
 %.o: $(SRCS)%.c
 	@$(CC) $(FLAGS) -o $@ -c $^

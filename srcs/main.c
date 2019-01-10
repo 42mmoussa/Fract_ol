@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmoussa <mmoussa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/10 15:24:55 by mmoussa           #+#    #+#             */
+/*   Updated: 2019/01/10 15:24:55 by mmoussa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fractol.h"
 
-void    ft_window(char *name)
+void	ft_window(char *name)
 {
-	t_mlx   *mlx;
+	t_mlx	*mlx;
 
 	if (!(mlx = malloc(sizeof(t_mlx) + 1)))
 		ft_error();
@@ -17,17 +29,18 @@ void    ft_window(char *name)
 	mlx_loop(mlx->mlx);
 }
 
-int     main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		ft_putstr("usage: ./fractol julia | mandelbort");
+		ft_putstr("usage: ./fractol julia | mandelbort | newton");
 		exit(1);
 	}
 	if (!ft_strequ(av[1], "mandelbrot") &&
-			!ft_strequ(av[1], "julia"))
+			!ft_strequ(av[1], "julia") &&
+				!ft_strequ(av[1], "newton"))
 	{
-		ft_putstr("usage: ./fractol julia | mandelbort");
+		ft_putstr("usage: ./fractol julia | mandelbort | newton");
 		exit(1);
 	}
 	ft_window(ft_strdup(av[1]));

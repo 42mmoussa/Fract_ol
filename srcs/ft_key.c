@@ -1,36 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_key.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmoussa <mmoussa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/10 15:24:44 by mmoussa           #+#    #+#             */
+/*   Updated: 2019/01/10 15:24:45 by mmoussa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fractol.h"
+
+static void	ft_switch(int key, t_mlx *mlx)
+{
+	mlx->z_x = -2;
+	mlx->z_y = -2;
+	mlx->zoom = 150;
+	mlx->mandelbrot = 0;
+	mlx->julia = 0;
+	mlx->newton = 0;
+	if (key == 18)
+		mlx->mandelbrot = 1;
+	else if (key == 19)
+		mlx->julia = 1;
+	else if (key == 20)
+		mlx->newton = 1;
+}
 
 int			deal_key(int key, t_mlx *mlx)
 {
-	(void)mlx;
 	if (key == 53)
 		exit(1);
-	else if (key == 35 && mlx->psy == 0)
-		mlx->psy = 1;
-	else if (key == 35 && mlx->psy == 1)
-		mlx->psy = 0;
-	ft_putnbr(key);
-	if (key == 46)
-	{
-		mlx->z_x = -3.3;
-		mlx->z_y = -1.65;
-		mlx->zoom = 350;
-		mlx->iteration = 1000;
-		mlx->mandelbrot = 1;
-		mlx->julia = 0;
-	}
-	if (key == 38)
-	{
-		mlx->z_x = -3;
-		mlx->z_y = -1.6;
-		mlx->zoom = 200;
-		mlx->iteration = 1000;
-		mlx->mandelbrot = 0;
-		mlx->julia = 1;
-	}
-	if (key == 49)
-		mlx->julia = mlx->julia == 0 ? 1 : 0;
-	if (mlx->julia == 0 && mlx->mandelbrot == 0)
-		mlx_string_put(mlx->mlx, mlx->win, 900, 525, 0xffffff, "|| PAUSE");
+	else if (key == 35 && (mlx->julia == 1 || mlx->newton == 1))
+		mlx->psy = mlx->psy == 0 ? 1 : 0;
+	else if (key == 18 || key == 19 || key == 20)
+		ft_switch(key, mlx);
+	ft_draw_fractals(mlx);
 	return (0);
 }
