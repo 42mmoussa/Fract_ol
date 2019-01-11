@@ -37,7 +37,7 @@ int		loop_hook(t_mlx *mlx)
 
 int		julia_mouse(int x, int y, t_mlx *mlx)
 {
-	if ((mlx->julia == 1 || mlx->newton == 1) && mlx->pause == 0)
+	if ((mlx->julia == 1 || mlx->ship == 1) && mlx->pause == 0)
 	{
 		mlx_clear_window(mlx->mlx, mlx->win);
 		mlx->c1 = 1 - ((float)x / (float)(WIDTH / 2));
@@ -49,19 +49,16 @@ int		julia_mouse(int x, int y, t_mlx *mlx)
 
 int		deal_mouse(int button, int x, int y, t_mlx *mlx)
 {
+	ft_putnbr(button);
 	if (button == 2)
-	{
 		mlx->color += 0x000003;
-		ft_draw_fractals(mlx);
-	}
-	if (button == 4)
+	if (button == 4 || button == 1)
 	{
 		mlx->z_x = ((float)x / mlx->zoom + mlx->z_x) \
 			- ((float)x / (mlx->zoom * 1.2));
 		mlx->z_y = ((float)y / mlx->zoom + mlx->z_y) \
 			- ((float)y / (mlx->zoom * 1.2));
 		mlx->zoom *= 1.2;
-		ft_draw_fractals(mlx);
 	}
 	if (button == 5)
 	{
@@ -70,9 +67,10 @@ int		deal_mouse(int button, int x, int y, t_mlx *mlx)
 		mlx->z_y = ((float)y / mlx->zoom + mlx->z_y) \
 			- ((float)y / (mlx->zoom / 1.2));
 		mlx->zoom /= 1.2;
-		ft_draw_fractals(mlx);
 	}
-	if (button == 1)
+	if (button == 1 && (mlx->julia == 1 || mlx->ship == 1))
 		mlx->pause = mlx->pause == 0 ? 1 : 0;
+	if (button == 2 || button == 4 || button == 5)
+		ft_draw_fractals(mlx);
 	return (0);
 }

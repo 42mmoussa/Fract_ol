@@ -22,8 +22,9 @@ void	ft_init(t_mlx *mlx, char *name)
 	mlx->psy = 0;
 	mlx->mandelbrot = ft_strequ(mlx->name, "mandelbrot") == 1 ? 1 : 0;
 	mlx->julia = ft_strequ(mlx->name, "julia") == 1 ? 1 : 0;
-	mlx->newton = ft_strequ(mlx->name, "newton") == 1 ? 1 : 0;
-	mlx->other = ft_strequ(mlx->name, "phoenix") == 1 ? 1 : 0;
+	mlx->star = ft_strequ(mlx->name, "star") == 1 ? 1 : 0;
+	mlx->phoenix = ft_strequ(mlx->name, "phoenix") == 1 ? 1 : 0;
+	mlx->ship = ft_strequ(mlx->name, "burningship") == 1 ? 1 : 0;
 	mlx->zoom = 150;
 	mlx->z_x = -2;
 	mlx->z_y = -2;

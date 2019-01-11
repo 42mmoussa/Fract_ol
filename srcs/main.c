@@ -33,15 +33,16 @@ int		main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		ft_putstr("usage: ./fractol julia | mandelbort | newton | phoenix\n");
+		ft_putstr("usage: ./fractol julia | mandelbort | star | burningship\n");
 		exit(1);
 	}
 	if (!ft_strequ(av[1], "mandelbrot") &&
 			!ft_strequ(av[1], "julia") &&
-				!ft_strequ(av[1], "newton") &&
-					!ft_strequ(av[1], "phoenix"))
+				!ft_strequ(av[1], "star") &&
+					!ft_strequ(av[1], "phoenix") &&
+						!ft_strequ(av[1], "burningship"))
 	{
-		ft_putstr("usage: ./fractol julia | mandelbort | newton | phoenix\n");
+		ft_putstr("usage: ./fractol julia | mandelbort | star | burningship\n");
 		exit(1);
 	}
 	ft_window(ft_strdup(av[1]));

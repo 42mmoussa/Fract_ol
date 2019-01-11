@@ -13,7 +13,7 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "../minilibx_macos/mlx.h"
+# include "mlx.h"
 # include "../libft/libft.h"
 # include <math.h>
 # define HEIGHT 600
@@ -37,6 +37,7 @@ typedef struct	s_mlx
 	float	cb;
 	float	c1;
 	float	c2;
+	int		pause;
 	int		color;
 	int		lumin;
 	int		bpp;
@@ -48,14 +49,15 @@ typedef struct	s_mlx
 	int		zoom;
 	int		iter;
 	char	*name;
-	int		newton;
-	int		pause;
-	int		other;
+	int		star;
+	int		phoenix;
+	int		ship;
 }				t_mlx;
 
+void			ft_draw_burningship(t_mlx *mlx);
 void			ft_draw_phoenix(t_mlx *mlx);
 void			ft_draw_fractals(t_mlx *mlx);
-void			ft_draw_newton(t_mlx *mlx);
+void			ft_draw_star(t_mlx *mlx);
 int				julia_mouse(int x, int y, t_mlx *mlx);
 void			ft_init(t_mlx *mlx, char *fracname);
 int				loop_hook(t_mlx *mlx);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phoenix.c                                          :+:      :+:    :+:   */
+/*   newton.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmoussa <mmoussa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/11 12:25:13 by mmoussa           #+#    #+#             */
-/*   Updated: 2019/01/11 12:25:14 by mmoussa          ###   ########.fr       */
+/*   Created: 2019/01/10 15:25:04 by mmoussa           #+#    #+#             */
+/*   Updated: 2019/01/10 15:25:05 by mmoussa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-void		ft_draw_phoenix(t_mlx *mlx)
+void		ft_draw_star(t_mlx *mlx)
 {
 	float	n;
 
@@ -24,15 +24,16 @@ void		ft_draw_phoenix(t_mlx *mlx)
 		{
 			mlx->ca = mlx->x / mlx->zoom + mlx->z_x;
 			mlx->cb = mlx->y / mlx->zoom + mlx->z_y;
-			mlx->a = 0;
-			mlx->b = 0;
+			mlx->a = mlx->ca;
+			mlx->b = mlx->cb;
 			n = -1;
-			while (++n < mlx->iter && mlx->a * mlx->a + mlx->b * mlx->b < 4)
+			while (++n < mlx->iter && mlx->a + mlx->b < 16)
 			{
-				mlx->aa = mlx->a * mlx->a - mlx->b * mlx->b;
-				mlx->bb = 2 * fabs(mlx->b * mlx->a);
-				mlx->a = mlx->aa - mlx->ca;
-				mlx->b = mlx->bb + mlx->cb;
+				mlx->aa = (pow(mlx->a, 2) - pow(mlx->b, 2) * 4) * \
+					mlx->a * pow(-1, n);
+				mlx->bb = (mlx->a * mlx->a * 4 - pow(mlx->b, 2)) * mlx->b;
+				mlx->a = mlx->aa + 0.0;
+				mlx->b = mlx->bb + 0.75;
 			}
 			put_pixel_img(mlx, mlx->x, mlx->y, n);
 		}
