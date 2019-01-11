@@ -25,8 +25,8 @@ SRCS_LIBS = ./srcs/ft_error.c \
 
 CC = cc
 INC_LIBS = ./include
-INC_LIBX = /usr/local/include
-INC_MINILIBX = /usr/local/lib -lmlx -framework OpenGL -framework AppKit
+INC_LIBX = ./minilibx_macos
+INC_MINILIBX = ./minilibx_macos -lmlx -framework OpenGL -framework AppKit
 OBJS = $(SRCS_LIBS:.c=.o)
 FLAGS = -Werror -Wextra -Wall
 
