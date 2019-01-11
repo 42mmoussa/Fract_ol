@@ -16,6 +16,8 @@ void	ft_draw_fractals(t_mlx *mlx)
 {
 	if (mlx->julia == 1 || mlx->mandelbrot == 1)
 		ft_draw(mlx);
-	else
+	else if (mlx->newton == 1)
 		ft_draw_newton(mlx);
+	else if (mlx->other == 1)
+		ft_draw_phoenix(mlx);
 }

@@ -26,6 +26,8 @@ static void	ft_switch(int key, t_mlx *mlx)
 		mlx->julia = 1;
 	else if (key == 20)
 		mlx->newton = 1;
+	else if (key == 21)
+		mlx->other = 1;
 }
 
 int			deal_key(int key, t_mlx *mlx)
@@ -34,7 +36,7 @@ int			deal_key(int key, t_mlx *mlx)
 		exit(1);
 	else if (key == 35 && (mlx->julia == 1 || mlx->newton == 1))
 		mlx->psy = mlx->psy == 0 ? 1 : 0;
-	else if (key == 18 || key == 19 || key == 20)
+	else if (key >= 18 && key <= 21)
 		ft_switch(key, mlx);
 	ft_draw_fractals(mlx);
 	return (0);

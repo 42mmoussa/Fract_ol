@@ -25,7 +25,7 @@ void	ft_window(char *name)
 	mlx_hook(mlx->win, 6, 1L << 12, &julia_mouse, mlx);
 	mlx_mouse_hook(mlx->win, &deal_mouse, mlx);
 	mlx_loop_hook(mlx->mlx, &loop_hook, mlx);
-	ft_draw(mlx);
+	ft_draw_fractals(mlx);
 	mlx_loop(mlx->mlx);
 }
 
@@ -33,14 +33,15 @@ int		main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		ft_putstr("usage: ./fractol julia | mandelbort | newton");
+		ft_putstr("usage: ./fractol julia | mandelbort | newton | phoenix\n");
 		exit(1);
 	}
 	if (!ft_strequ(av[1], "mandelbrot") &&
 			!ft_strequ(av[1], "julia") &&
-				!ft_strequ(av[1], "newton"))
+				!ft_strequ(av[1], "newton") &&
+					!ft_strequ(av[1], "phoenix"))
 	{
-		ft_putstr("usage: ./fractol julia | mandelbort | newton");
+		ft_putstr("usage: ./fractol julia | mandelbort | newton | phoenix\n");
 		exit(1);
 	}
 	ft_window(ft_strdup(av[1]));

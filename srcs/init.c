@@ -18,11 +18,12 @@ void	ft_init(t_mlx *mlx, char *name)
 	mlx->mandelbrot = 0;
 	mlx->c1 = 0;
 	mlx->c2 = 0;
-	mlx->color = 0x100230;
+	mlx->color = 0x100230 + 0x000003 * 77 * 2;
 	mlx->psy = 0;
 	mlx->mandelbrot = ft_strequ(mlx->name, "mandelbrot") == 1 ? 1 : 0;
 	mlx->julia = ft_strequ(mlx->name, "julia") == 1 ? 1 : 0;
 	mlx->newton = ft_strequ(mlx->name, "newton") == 1 ? 1 : 0;
+	mlx->other = ft_strequ(mlx->name, "phoenix") == 1 ? 1 : 0;
 	mlx->zoom = 150;
 	mlx->z_x = -2;
 	mlx->z_y = -2;

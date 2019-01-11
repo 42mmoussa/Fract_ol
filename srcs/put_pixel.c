@@ -16,7 +16,7 @@ void	put_pixel_img(t_mlx *mlx, int x, int y, int n)
 {
 	mlx->lumin = 0;
 	if (n == mlx->iter)
-		mlx->lumin = 0;
+		mlx->lumin = 0xFFFF55;
 	else
 		mlx->lumin = mlx->color * n;
 	if (x >= 0 && y >= 0 && x < WIDTH && y < HEIGHT)

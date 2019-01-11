@@ -13,7 +13,7 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "mlx.h"
+# include "../minilibx_macos/mlx.h"
 # include "../libft/libft.h"
 # include <math.h>
 # define HEIGHT 600
@@ -50,8 +50,10 @@ typedef struct	s_mlx
 	char	*name;
 	int		newton;
 	int		pause;
+	int		other;
 }				t_mlx;
 
+void			ft_draw_phoenix(t_mlx *mlx);
 void			ft_draw_fractals(t_mlx *mlx);
 void			ft_draw_newton(t_mlx *mlx);
 int				julia_mouse(int x, int y, t_mlx *mlx);
